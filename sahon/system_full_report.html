@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZombieCoder - সম্পূর্ণ সিস্টেম রিপোর্ট</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Noto Sans Bengali", sans-serif;
+        background: #f8f9fa;
+      }
+      .section {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #0001;
+        margin-bottom: 30px;
+        padding: 24px;
+      }
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        margin-bottom: 18px;
+      }
+      .server-table th,
+      .server-table td {
+        vertical-align: middle;
+      }
+      .badge-server {
+        font-size: 1em;
+        padding: 0.4em 0.8em;
+        border-radius: 6px;
+      }
+      .badge-dispatcher {
+        background: #3498db;
+        color: #fff;
+      }
+      .badge-mcp {
+        background: #27ae60;
+        color: #fff;
+      }
+      .badge-audio {
+        background: #e67e22;
+        color: #fff;
+      }
+      .badge-laravel {
+        background: #8e44ad;
+        color: #fff;
+      }
+      .badge-main {
+        background: #2c3e50;
+        color: #fff;
+      }
+      .badge-client {
+        background: #16a085;
+        color: #fff;
+      }
+      .badge-other {
+        background: #7f8c8d;
+        color: #fff;
+      }
+      .table-striped > tbody > tr:nth-of-type(odd) > * {
+        background-color: #f2f6fa;
+      }
+      .feature-list li {
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <h1 class="mb-4">ZombieCoder - সম্পূর্ণ সিস্টেম রিপোর্ট</h1>
+
+      <div class="section">
+        <div class="section-title">১. সার্ভার তালিকা ও ভূমিকা</div>
+        <table class="table table-striped server-table">
+          <thead>
+            <tr>
+              <th>নাম</th>
+              <th>পোর্ট</th>
+              <th>টাইপ</th>
+              <th>মূল কাজ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-dispatcher">Dispatcher</span></td>
+              <td>5001</td>
+              <td>Core</td>
+              <td>ইনপুট রাউটিং, fallback, এজেন্ট নির্বাচন</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-mcp">MCP Server</span></td>
+              <td>11435</td>
+              <td>Model Context Protocol</td>
+              <td>মডেল কন্টেক্সট ও এজেন্ট অর্কেস্ট্রেশন</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-audio">Audio API</span></td>
+              <td>5003</td>
+              <td>Voice</td>
+              <td>টেক্সট-টু-স্পীচ, স্পীচ-টু-টেক্সট, অডিও স্ট্রিমিং</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-laravel">Laravel API</span></td>
+              <td>8000</td>
+              <td>Backend</td>
+              <td>ডাটাবেজ, ইউজার, প্রোভাইডার ম্যানেজমেন্ট</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-main">Main Server</span></td>
+              <td>5000</td>
+              <td>Flask</td>
+              <td>মূল এপ্লিকেশন, এডমিন প্যানেল, API</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-client">Client API</span></td>
+              <td>5002</td>
+              <td>API</td>
+              <td>ক্লায়েন্ট ইন্টারফেস, মনিটরিং</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <div class="section-title">২. প্রোভাইডার ও এজেন্ট</div>
+        <ul class="feature-list">
+          <li>
+            OpenAI, Groq, Ollama, TogetherAI, Mistral, OpenRouter, LMStudio -
+            মোট ৭টি প্রোভাইডার
+          </li>
+          <li>
+            এজেন্ট: instruct, blog_writer_bn, programming_agent, groq_agent,
+            ollama_agent, lmstudio_agent, openrouter_agent
+          </li>
+          <li>প্রতিটি এজেন্টের জন্য আলাদা YAML কনফিগ ও পার্সোনালিটি ফাইল</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">৩. এপিআই ও স্টোরেজ</div>
+        <ul class="feature-list">
+          <li>এডমিন API: সার্ভার কন্ট্রোল, লগ, মেট্রিক্স, এজেন্ট কনফিগারেশন</li>
+          <li>ভয়েস API: অডিও জেনারেশন, স্ট্রিমিং, প্রিভিউ</li>
+          <li>ডাটাবেজ: Laravel (MySQL), SQLite, ফাইল-ভিত্তিক স্টোরেজ</li>
+          <li>
+            স্টোরেজ ফোল্ডার: <code>storage/</code> (প্রোভাইডার ও মডেল অনুযায়ী
+            আলাদা সাব-ডিরেক্টরি)
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">৪. ফিচার ও ফিউচার প্ল্যানিং</div>
+        <ul class="feature-list">
+          <li>রিয়েল-টাইম মনিটরিং ও লগিং</li>
+          <li>এডমিন প্যানেল থেকে সরাসরি সার্ভার কন্ট্রোল</li>
+          <li>এজেন্ট পারফরম্যান্স ট্র্যাকিং</li>
+          <li>ডিস্ট্রিবিউটেড ক্যাশিং ও ফলব্যাক</li>
+          <li>লো কনফিগারেশন কম্পিউটারে অপ্টিমাইজড রান</li>
+          <li>নতুন প্রোভাইডার ও এজেন্ট সহজে যুক্ত করার সুবিধা</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">৫. সার্ভার অটো-স্টার্ট ও ম্যানেজমেন্ট</div>
+        <ul class="feature-list">
+          <li>PowerShell ও Bash স্ক্রিপ্ট দিয়ে এক ক্লিকে সব সার্ভার চালু</li>
+          <li>এডমিন প্যানেল থেকে স্ট্যাটাস ও কন্ট্রোল</li>
+          <li>
+            স্টার্টআপে অটোমেটিক সার্ভার রান করার জন্য <code>launchers/</code> ও
+            <code>powershell/</code> ফোল্ডার
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">৬. সংক্ষিপ্ত মন্তব্য ও সুপারিশ</div>
+        <ul class="feature-list">
+          <li>প্রজেক্টটি অত্যন্ত মডুলার ও স্কেলেবল</li>
+          <li>নতুন ফিচার যোগ করা সহজ</li>
+          <li>ডকুমেন্টেশন আরও বিস্তারিত করা দরকার</li>
+          <li>লো-রিসোর্স অপ্টিমাইজেশন ও টেস্টিং বাড়ানো উচিত</li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

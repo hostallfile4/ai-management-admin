@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>সার্ভার প্যাকেজ ডকুমেন্টেশন</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+      body {
+        font-family: "Noto Sans Bengali", Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        color: #2d3436;
+        background: #f5f6fa;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #2c3e50;
+        margin-top: 2em;
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 1em;
+        padding-bottom: 0.5em;
+        border-bottom: 2px solid #3498db;
+      }
+      .server-block {
+        background: #f9f9f9;
+        border-left: 4px solid #2ecc71;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+      .package-block {
+        background: #f5f6fa;
+        border: 1px solid #dcdde1;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 4px;
+      }
+      code {
+        background: #2d3436;
+        color: #dfe6e9;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+      .command-block {
+        background: #2d3436;
+        color: #dfe6e9;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 10px 0;
+        font-family: monospace;
+      }
+      .note {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 10px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>সার্ভার প্যাকেজ ডকুমেন্টেশন</h1>
+
+    <h2>১. সার্ভার অবলোকন</h2>
+
+    <div class="server-block">
+      <h3>১.১ মডেল সার্ভার (পোর্ট: 5000)</h3>
+      <p><strong>মূল কাজ:</strong> AI মডেল সার্ভিং এবং প্রেডিকশন হ্যান্ডলিং</p>
+      <p><strong>স্ক্রিপ্ট:</strong> <code>app.py</code></p>
+      <p><strong>এন্ডপয়েন্ট:</strong> <code>/api/status</code></p>
+      <p>
+        <strong>স্ট্যাটাস চেক:</strong>
+        <code>curl http://localhost:5000/api/status</code>
+      </p>
+    </div>
+
+    <div class="server-block">
+      <h3>১.২ মেইন সার্ভার (পোর্ট: 5001)</h3>
+      <p>
+        <strong>মূল কাজ:</strong> কোর অ্যাপ্লিকেশন সার্ভার, রাউটিং এবং
+        ব্যবহারকারী ইন্টারফেস
+      </p>
+      <p><strong>স্ক্রিপ্ট:</strong> <code>app.py</code></p>
+      <p><strong>এন্ডপয়েন্ট:</strong> <code>/status</code></p>
+      <p>
+        <strong>স্ট্যাটাস চেক:</strong>
+        <code>curl http://localhost:5001/status</code>
+      </p>
+    </div>
+
+    <div class="server-block">
+      <h3>১.৩ ক্লায়েন্ট API (পোর্ট: 5002)</h3>
+      <p>
+        <strong>মূল কাজ:</strong> ক্লায়েন্ট মনিটরিং এবং স্ট্যাটাস ট্র্যাকিং
+      </p>
+      <p><strong>স্ক্রিপ্ট:</strong> <code>client_monitoring_api.py</code></p>
+      <p><strong>এন্ডপয়েন্ট:</strong> <code>/api/health</code></p>
+      <p>
+        <strong>স্ট্যাটাস চেক:</strong>
+        <code>curl http://localhost:5002/api/health</code>
+      </p>
+    </div>
+
+    <div class="server-block">
+      <h3>১.৪ অডিও API (পোর্ট: 5003)</h3>
+      <p><strong>মূল কাজ:</strong> অডিও প্রসেসিং এবং টেক্সট-টু-স্পীচ সার্ভিস</p>
+      <p><strong>স্ক্রিপ্ট:</strong> <code>zonemind_audio_api.py</code></p>
+      <p><strong>এন্ডপয়েন্ট:</strong> <code>/api/audio/health</code></p>
+      <p>
+        <strong>স্ট্যাটাস চেক:</strong>
+        <code>curl http://localhost:5003/api/audio/health</code>
+      </p>
+    </div>
+
+    <div class="server-block">
+      <h3>১.৫ MCP সার্ভার (পোর্ট: 11435)</h3>
+      <p><strong>মূল কাজ:</strong> মডেল কন্টেক্সট প্রোটোকল সার্ভার</p>
+      <p><strong>স্ক্রিপ্ট:</strong> <code>mcp_server.py</code></p>
+      <p><strong>এন্ডপয়েন্ট:</strong> <code>/status</code></p>
+      <p>
+        <strong>স্ট্যাটাস চেক:</strong>
+        <code>curl http://localhost:11435/status</code>
+      </p>
+    </div>
+
+    <h2>২. প্রয়োজনীয় প্যাকেজসমূহ</h2>
+
+    <div class="package-block">
+      <h3>২.১ ওয়েব ফ্রেমওয়ার্ক</h3>
+      <ul>
+        <li><code>flask==3.1.1</code> - ওয়েব অ্যাপ্লিকেশন ফ্রেমওয়ার্ক</li>
+        <li>
+          <code>fastapi==0.116.1</code> - আধুনিক, দ্রুত ওয়েব ফ্রেমওয়ার্ক
+        </li>
+        <li><code>uvicorn==0.35.0</code> - ASGI সার্ভার</li>
+      </ul>
+    </div>
+
+    <div class="package-block">
+      <h3>২.২ অডিও প্রসেসিং</h3>
+      <ul>
+        <li><code>pyttsx3==2.99</code> - টেক্সট-টু-স্পীচ ইঞ্জিন</li>
+        <li><code>gTTS==2.5.4</code> - Google টেক্সট-টু-স্পীচ API</li>
+      </ul>
+    </div>
+
+    <div class="package-block">
+      <h3>২.৩ সিস্টেম টুলস</h3>
+      <ul>
+        <li><code>psutil==7.0.0</code> - সিস্টেম এবং প্রসেস মনিটরিং</li>
+        <li>
+          <code>python-dotenv==1.1.1</code> - এনভায়রনমেন্ট ভ্যারিয়েবল
+          ম্যানেজমেন্ট
+        </li>
+        <li><code>watchdog==6.0.0</code> - ফাইল সিস্টেম মনিটরিং</li>
+      </ul>
+    </div>
+
+    <div class="package-block">
+      <h3>২.৪ অন্যান্য টুলস</h3>
+      <ul>
+        <li><code>markdown2==2.5.3</code> - মার্কডাউন প্রসেসিং</li>
+        <li><code>flask-cors==6.0.1</code> - ক্রস-অরিজিন রিসোর্স শেয়ারিং</li>
+        <li><code>PyYAML==6.0.2</code> - YAML ফাইল প্রসেসিং</li>
+      </ul>
+    </div>
+
+    <h2>৩. ইনস্টলেশন নির্দেশনা</h2>
+
+    <h3>৩.১ ভার্চুয়াল এনভায়রনমেন্ট সেটআপ</h3>
+    <div class="command-block">
+      # ভার্চুয়াল এনভায়রনমেন্ট তৈরি python -m venv .venv # ভার্চুয়াল
+      এনভায়রনমেন্ট অ্যাক্টিভেট .\.venv\Scripts\activate
+    </div>
+
+    <h3>৩.২ প্যাকেজ ইনস্টলেশন</h3>
+    <div class="command-block">
+      # pip আপডেট python -m pip install -U pip # requirements.txt থেকে ইনস্টল
+      python -m pip install -r requirements.txt
+    </div>
+
+    <h3>৩.৩ সার্ভার স্টার্টআপ ক্রম</h3>
+    <div class="command-block">
+      # ১. MCP সার্ভার python mcp_server.py # ২. মডেল সার্ভার python app.py # ৩.
+      মেইন সার্ভার cd api && python app.py # ৪. ক্লায়েন্ট API python
+      client_monitoring_api.py # ৫. অডিও API python zonemind_audio_api.py
+    </div>
+
+    <div class="note">
+      <h4>বিশেষ দ্রষ্টব্য:</h4>
+      <ul>
+        <li>প্রতিটি সার্ভার আলাদা টার্মিনাল উইন্ডোতে চালাতে হবে</li>
+        <li>সার্ভারগুলো অবশ্যই উপরের ক্রম অনুযায়ী চালাতে হবে</li>
+        <li>প্রতিটি সার্ভার চালু করার পর স্টেটাস চেক করতে হবে</li>
+        <li>কোন সার্ভার চালু না হলে লগ ফাইল চেক করতে হবে</li>
+      </ul>
+    </div>
+
+    <h2>৪. প্যাকেজ ভার্সন চেক</h2>
+
+    <div class="command-block">
+      # সব ইনস্টল করা প্যাকেজ দেখা python -m pip list # নির্দিষ্ট প্যাকেজের
+      ভার্সন চেক python -c "import flask; print(flask.__version__)" python -c
+      "import fastapi; print(fastapi.__version__)"
+    </div>
+  </body>
+</html>

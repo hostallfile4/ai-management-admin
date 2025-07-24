@@ -48,6 +48,13 @@ def health_check():
 
 def run_flask():
     """Run Flask app in a separate thread"""
+    # Set event loop for the thread
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
+    # Start monitoring threads with event loops
+    system_monitor.start()
+    editor_monitor.start()
     app.run(host='0.0.0.0', port=5000, debug=False)
 
 def run_websocket_server():

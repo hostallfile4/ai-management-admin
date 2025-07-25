@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>জম্বি কোডার - বিস্তারিত প্রজেক্ট বিশ্লেষণ</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Noto Sans Bengali", sans-serif;
+        line-height: 1.8;
+      }
+      .section {
+        margin-bottom: 30px;
+        padding: 20px;
+        border-radius: 8px;
+        background: #f8f9fa;
+      }
+      .highlight {
+        background: #e3f2fd;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+      .server-status {
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 4px;
+      }
+      .status-active {
+        background: #d4edda;
+      }
+      .status-inactive {
+        background: #f8d7da;
+      }
+      .feature-card {
+        border-left: 4px solid #2c3e50;
+        padding: 10px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <h1 class="mb-4">বিস্তারিত প্রজেক্ট বিশ্লেষণ রিপোর্ট</h1>
+
+      <div class="section">
+        <h2>১. সার্ভার স্ট্রাকচার</h2>
+        <div class="server-status status-active">
+          <h4>মূল সার্ভারগুলি:</h4>
+          <ul>
+            <li>মডেল সার্ভার (পোর্ট: 5000) - AI মডেল হ্যান্ডলিং</li>
+            <li>মেইন সার্ভার (পোর্ট: 5001) - মূল অ্যাপ্লিকেশন লজিক</li>
+            <li>ক্লায়েন্ট API (পোর্ট: 5002) - ক্লায়েন্ট ইন্টারফেস</li>
+            <li>অডিও API (পোর্ট: 5003) - ভয়েস প্রসেসিং</li>
+            <li>MCP সার্ভার (পোর্ট: 11435) - Model Context Protocol</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>২. প্রধান কম্পোনেন্টস</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h4>এডমিন প্যানেল</h4>
+              <ul>
+                <li>ড্যাশবোর্ড মনিটরিং</li>
+                <li>সিস্টেম স্ট্যাটাস</li>
+                <li>লগ ম্যানেজমেন্ট</li>
+                <li>এজেন্ট কনফিগারেশন</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h4>ভয়েস সিস্টেম</h4>
+              <ul>
+                <li>টেক্সট-টু-স্পীচ</li>
+                <li>স্পীচ-টু-টেক্সট</li>
+                <li>বাংলা ভয়েস সাপোর্ট</li>
+                <li>অডিও স্ট্রিমিং</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>৩. এজেন্ট সিস্টেম</h2>
+        <ul>
+          <li>blog_writer_bn.yaml - বাংলা ব্লগ লেখার এজেন্ট</li>
+          <li>instruct_agent.yaml - সাধারণ নির্দেশনা এজেন্ট</li>
+          <li>groq_agent.yaml - Groq API এজেন্ট</li>
+          <li>programming_agent.yaml - কোডিং সহায়ক এজেন্ট</li>
+          <li>ollama_agent.yaml - লোকাল মডেল এজেন্ট</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>৪. অডিও সিস্টেম</h2>
+        <p>সাপোর্টেড ফরম্যাট:</p>
+        <ul>
+          <li>PCM16 (24kHz sample rate)</li>
+          <li>MP3 (ভয়েস আউটপুট)</li>
+          <li>OGG (স্ট্রিমিং)</li>
+          <li>WAV (রেকর্ডিং)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>৫. পরবর্তী উন্নয়নের সুপারিশ</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>অল্প রিসোর্সে চালানোর জন্য:</h4>
+            <ul>
+              <li>মডেল কম্প্রেশন ব্যবহার করা</li>
+              <li>লোড ব্যালেন্সিং সিস্টেম যোগ করা</li>
+              <li>ক্যাশিং সিস্টেম আপডেট করা</li>
+              <li>রিসোর্স অপটিমাইজেশন</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h4>ফিচার আপডেট প্ল্যান:</h4>
+            <ul>
+              <li>এজেন্ট পারফরম্যান্স মনিটরিং</li>
+              <li>অটো-স্কেলিং সিস্টেম</li>
+              <li>ডিস্ট্রিবিউটেড ক্যাশিং</li>
+              <li>ফলব্যাক মেকানিজম</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>৬. ব্যক্তিগত মতামত</h2>
+        <p>
+          প্রজেক্টটি বেশ ভালভাবে স্ট্রাকচার করা হয়েছে। বিশেষ করে এজেন্ট-ভিত্তিক
+          আর্কিটেকচার এবং মডুলার ডিজাইন প্রশংসনীয়। তবে কিছু বিষয়ে মনোযোগ
+          দেওয়া প্রয়োজন:
+        </p>
+        <ul>
+          <li>এরর হ্যান্ডলিং আরও শক্তিশালী করা দরকার</li>
+          <li>টেস্ট কভারেজ বাড়ানো প্রয়োজন</li>
+          <li>পারফরম্যান্স মনিটরিং টুল যোগ করা উচিত</li>
+          <li>ডকুমেন্টেশন আরও বিস্তারিত করা দরকার</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>৭. আপডেট প্রক্রিয়া</h2>
+        <p>নিম্নলিখিত ধাপে আপডেট করা যেতে পারে:</p>
+        <ol>
+          <li>প্রতি সপ্তাহে ছোট আপডেট</li>
+          <li>মাসে একবার বড় ফিচার আপডেট</li>
+          <li>তিন মাসে একবার মেজর আপডেট</li>
+          <li>প্রতি আপডেটে টেস্টিং নিশ্চিত করা</li>
+        </ol>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

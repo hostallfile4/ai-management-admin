@@ -7,6 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu"
+import {
   Brain,
   Database,
   Server,
@@ -22,6 +30,15 @@ import {
   Webhook,
   FileText,
   HelpCircle,
+  FolderOpen,
+  Calendar,
+  Truck,
+  CheckSquare,
+  User,
+  Music,
+  NotebookPen,
+  ChevronDown,
+  Wrench,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/lib/language-context"
@@ -70,11 +87,57 @@ const navigation = [
     href: "/admin/users",
     icon: Users,
   },
+]
+
+// Productivity Tools Menu
+const productivityTools = [
   {
-    name: "Settings",
-    nameKey: "settings",
-    href: "/admin/settings",
-    icon: Settings,
+    name: "প্রোডাক্টিভিটি নোটপ্যাড",
+    href: "/admin/productivity/notepad",
+    icon: NotebookPen,
+    description: "উন্নত নোটপ্যাড ও শর্টকাট",
+  },
+  {
+    name: "প্রজেক্ট সময়সূচী",
+    href: "/admin/productivity/scheduler",
+    icon: Calendar,
+    description: "প্রজেক্ট পরিকল্পনা ও সময়সূচী",
+  },
+  {
+    name: "প্রজেক্ট ম্যানেজমেন্ট",
+    href: "/admin/productivity/projects",
+    icon: FolderOpen,
+    description: "সম্পূর্ণ প্রজেক্ট ব্যবস্থাপনা",
+  },
+  {
+    name: "প্রজেক্ট ডেলিভারি",
+    href: "/admin/productivity/delivery",
+    icon: Truck,
+    description: "ক্লায়েন্ট ডেলিভারি ট্র্যাকিং",
+  },
+  {
+    name: "কাজের তালিকা",
+    href: "/admin/productivity/todo",
+    icon: CheckSquare,
+    description: "দৈনিক কাজের পরিকল্পনা",
+  },
+  {
+    name: "কাস্টম ক্যারেক্টার",
+    href: "/admin/productivity/character",
+    icon: User,
+    description: "ক্যারেক্টার তৈরি ও কাস্টমাইজ",
+  },
+  {
+    name: "টেক্সট সংশোধন",
+    href: "/admin/productivity/correction",
+    icon: FileText,
+    description: "স্বয়ংক্রিয় টেক্সট সংশোধন",
+  },
+  {
+    name: "MP3 প্লেলিস্ট",
+    href: "/admin/productivity/music",
+    icon: Music,
+    description: "কাস্টম মিউজিক প্লেলিস্ট",
   },
 ]
 
@@ -116,6 +179,8 @@ export function AdminSidebar() {
   const pathname = usePathname()
   const { t, language, setLanguage } = useLanguage()
 
+  const isProductivityActive = pathname.startsWith("/admin/productivity")
+
   return (
     <div
       className={cn(
@@ -145,6 +210,8 @@ export function AdminSidebar() {
             {!collapsed && (
               <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Administration</p>
             )}
+
+            {/* Regular Navigation Items */}
             {navigation.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -172,6 +239,84 @@ export function AdminSidebar() {
                 </Link>
               )
             })}
+
+            {/* Productivity Tools Dropdown */}
+            {collapsed ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant={isProductivityActive ? "default" : "ghost"}
+                    className={cn(
+                      "w-full justify-start px-2",
+                      isProductivityActive && "bg-green-600 text-white hover:bg-green-700",
+                    )}
+                  >
+                    <Wrench className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side="right" className="w-80">
+                  <DropdownMenuLabel>প্রোডাক্টিভিটি টুলস</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  {productivityTools.map((tool) => (
+                    <DropdownMenuItem key={tool.href} asChild>
+                      <Link href={tool.href} className="flex items-center gap-3 p-3">
+                        <tool.icon className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">{tool.name}</div>
+                          <div className="text-xs text-gray-500">{tool.description}</div>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant={isProductivityActive ? "default" : "ghost"}
+                    className={cn(
+                      "w-full justify-start px-3",
+                      isProductivityActive && "bg-green-600 text-white hover:bg-green-700",
+                    )}
+                  >
+                    <Wrench className="h-4 w-4 mr-3" />
+                    <span>প্রোডাক্টিভিটি টুলস</span>
+                    <ChevronDown className="h-4 w-4 ml-auto" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side="right" className="w-80">
+                  <DropdownMenuLabel>প্রোডাক্টিভিটি টুলস</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  {productivityTools.map((tool) => (
+                    <DropdownMenuItem key={tool.href} asChild>
+                      <Link href={tool.href} className="flex items-center gap-3 p-3">
+                        <tool.icon className="h-4 w-4" />
+                        <div>
+                          <div className="font-medium">{tool.name}</div>
+                          <div className="text-xs text-gray-500">{tool.description}</div>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
+
+            {/* Settings */}
+            <Link href="/admin/settings">
+              <Button
+                variant={pathname === "/admin/settings" ? "default" : "ghost"}
+                className={cn(
+                  "w-full justify-start",
+                  collapsed ? "px-2" : "px-3",
+                  pathname === "/admin/settings" && "bg-blue-600 text-white hover:bg-blue-700",
+                )}
+              >
+                <Settings className={cn("h-4 w-4", collapsed ? "" : "mr-3")} />
+                {!collapsed && <span>Settings</span>}
+              </Button>
+            </Link>
           </div>
 
           <Separator className="my-4" />
